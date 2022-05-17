@@ -12,6 +12,8 @@ router.post('/:appId/:category',
         check('image', 'Campo image es requerido').exists(),
         check('appId', 'Campo appId debe ser un campo string').isString(),
         check('category', 'Campo category debe ser un campo string').isString(),
+        check('path', 'Campo opcional').optional(),
+        check('path', 'Campo category debe ser un campo string').isString(),
     ],
     (req, res, next) => {
         const errors = validationResult(req)

@@ -14,7 +14,7 @@ const imageCtrl = {}
 
 imageCtrl.saveImage = async (req, res) => {
     try {
-        const { nameImage, image } = req.body
+        const { nameImage, image, path } = req.body
         const { appId, category } = req.params
         const s3 = apps.find(x => x.appId.toLowerCase() == appId.toLowerCase())
         if (s3) {
@@ -22,7 +22,7 @@ imageCtrl.saveImage = async (req, res) => {
             if (selectedCategory) {
                 const obj = {
                     document: image,
-                    path: s3.appId.toLowerCase() + selectedCategory.PATH,
+                    path: path && path != '' ? path : s3.appId.toLowerCase() + selectedCategory.PATH,
                     name: nameImage,
                     bucket: s3.bucket
                 }
