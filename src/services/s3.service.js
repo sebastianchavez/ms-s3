@@ -57,6 +57,7 @@ s3Service.saveObject = async (obj) => {
 
 s3Service.deleteObject = (obj) => {
     params.Key = `${obj.path}${obj.name}`
+    params.Bucket = obj.bucket
     delete params.Body
     delete params.ACL
     return s3.deleteObject(params).promise()

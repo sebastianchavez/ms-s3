@@ -41,4 +41,27 @@ imageCtrl.saveImage = async (req, res) => {
     }
 }
 
+imageCtrl.deleteImage = async (req, res) => {
+    try {
+        const { nameImage, path } = req.body
+        const { appId } = req.params
+        const s3 = apps.find(x => x.appId.toLowerCase() == appId.toLowerCase())
+        if (s3) {
+            const obj = {
+                path,
+                name: nameImage,
+                bucket: s3.bucket
+            }
+            const response = await s3Service.deleteObject(obj)
+            res.status(200).send({ message: 'Imagen eliminada con éxito' })
+        } else {
+            res.status(400).send({ message: 'App incorrecta' })
+        }
+    } catch (error) {
+        logger.error(`Error deleteImage - ${new Date().toISOString()} - ${e}`)
+        console.error('Error deleteImage: ', e)
+        res.status(500).send({ message: CONSTANTS.DEFAULT_ERROR })
+    }
+}
+
 module.exports = imageCtrl
