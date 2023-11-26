@@ -27,7 +27,7 @@ fileCtrl.updateFile = async (req, res) => {
             }
             const response = await s3Service.saveObject(obj)
             console.log('Response:', response)
-            res.status(200).send({ message: 'Imagen cargada con éxito', url: response.Location })
+            res.status(200).send({ message: 'Archivo cargada con éxito', url: response.Location })
         } else {
             res.status(400).send({ message: 'App incorrecta' })
         }
