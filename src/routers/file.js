@@ -8,7 +8,7 @@ router.post('/update-file/:appId',
     isAuth,
     [
         check('file', 'Campo file es requerido').exists(),
-        check('file', 'Campo file debe ser un campo string').isString(),
+        check('file', 'Campo file debe ser un campo base64').isBase64(),
         check('name', 'Campo name es requerido').exists(),
         check('name', 'Campo name debe ser un campo string').isString(),
         check('path', 'Campo path es requerido').exists(),
