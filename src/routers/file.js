@@ -5,7 +5,7 @@ const fileCtrl = require('../controllers/file.controller')
 const isAuth = require('../middlewares/auth')
 
 router.post('/update-file/:appId',
-    isAuth,
+    // isAuth,
     // [
     //     check('file', 'Campo file es requerido').exists(),
     //     check('file', 'Campo file debe ser un campo base64').isBase64(),
