@@ -15,6 +15,8 @@ const fileCtrl = {}
 
 fileCtrl.updateFile = async (req, res) => {
     try {
+        console.log('req:',req.body);
+        console.log('params:',req.params);
         const { file, name, path } = req.body
         const { appId } = req.params
         const s3 = apps.find(x => x.appId.toLowerCase() == appId.toLowerCase())
