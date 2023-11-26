@@ -23,7 +23,7 @@ fileCtrl.updateFile = async (req, res) => {
                 document: file,
                 path,
                 name,
-                bucket: s3.bucket
+                bucket: process.env.S3_BUCKET
             }
             const response = await s3Service.saveObject(obj)
             console.log('Response:', response)
